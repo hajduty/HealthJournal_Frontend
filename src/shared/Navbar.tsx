@@ -9,7 +9,7 @@ export function Navbar() {
 
     return (
         <>
-            <div className="bg-slate-600 w-fill h-36 flex justify-around items-center">
+            <div className="bg-slate-900 w-fill h-24 flex justify-around items-center z-50">
                 <Link to={"/"}>
                     <h1 className="text-white text-4xl">HealthJournal</h1>
                 </Link>
