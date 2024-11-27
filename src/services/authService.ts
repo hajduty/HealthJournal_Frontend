@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './axiosConfig';
 import { API_URL } from '../utils/utils';
 
 export const loginUser = async (email: string, password: string) => {
