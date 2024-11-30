@@ -5,7 +5,6 @@ import { SearchResults } from "../../model/searchResults";
 
 export function SearchPatients({
     query,
-    onQueryChange,
     onSelectPatient,
     initialPageSize = 5,
     className = "",
@@ -57,14 +56,14 @@ export function SearchPatients({
                     <div className="table-row-group">
                         {results.patients.map((patient, index) => (
                             <div
-                                key={patient.fullName + patient.userId + patient.age}
+                                key={patient.firstName + " " +patient.lastName + patient.userId + patient.age}
                                 className={`table-row cursor-pointer ${
                                     index % 2 === 0 ? "bg-slate-300" : "bg-slate-200"
                                 }`}
                                 onClick={() => onSelectPatient(patient)}
                                 role="button"
                             >
-                                <div className="table-cell p-2">{patient.fullName}</div>
+                                <div className="table-cell p-2">{patient.firstName + " " +patient.lastName}</div>
                                 <div className="table-cell p-2">{patient.age}</div>
                                 <div className="table-cell p-2">{patient.userId}</div>
                             </div>

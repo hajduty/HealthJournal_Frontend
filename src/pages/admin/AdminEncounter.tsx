@@ -1,26 +1,29 @@
-import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { SearchPatients } from "../../shared/admin/SearchPatient";
+import "react-datepicker/dist/react-datepicker.css";
+import { Patient } from "../../model/patient";
+import { CreateEncounter } from "../../shared/admin/CreateEncounter";
+import { motion, AnimatePresence } from "framer-motion";
+import { PatientDetails } from "../../shared/admin/PatientDetails";
 
 export function AdminEncounter() {
-    const navigate = useNavigate();
     const [query, setQuery] = useState<string>("");
-    const [patient, setPatient] = useState<any>();
+    const [patient, setPatient] = useState<Patient>();
     const [placeholder, setPlaceholder] = useState<string>("Name...");
 
     const handleQueryChange = (newQuery: string) => setQuery(newQuery);
 
-    const handlePatientSelect = (patient: any) => {
+    const handlePatientSelect = (patient: Patient) => {
         console.log("Selected patient:", patient);
-        setPlaceholder(patient.fullName);
+        setPlaceholder(patient.firstName + " " + patient.lastName);
         setQuery("");
         setPatient(patient);
     };
 
     return (
-        <div className="grid lg:grid-cols-3 grid-rows-3  lg:mx-20 md:mx-40 lg:my-16 m-16 gap-6 text-slate-900">
+        <div className="grid lg:grid-cols-3 grid-flow-row auto-rows-max lg:mx-20 md:mx-8 lg:my-16 m-2 gap-4 text-slate-900">
             <div className="flex flex-col">
-                <p className="text-lg text-slate-700">Select Patient</p>
+                <p className="text-lg text-slate-700 font-semibold">Select Patient</p>
                 <input
                     value={query}
                     onChange={(e) => handleQueryChange(e.target.value)}
@@ -34,13 +37,36 @@ export function AdminEncounter() {
                     onSelectPatient={handlePatientSelect}
                     className="w-full"
                 />
+                <AnimatePresence>
+                    {patient && (
+                        <motion.div
+                            key="create-encounter"
+                            initial={{ opacity: 0, y: 25 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="my-4"
+                        >
+                            <PatientDetails patient={patient} />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-            <div className="flex flex-col">
-                <p className="text-lg text-slate-700">Add encounter</p>
-                <div className="p-3 border-1 bg-slate-600">
-                    <input type="text" placeholder=""/>
-                </div>
-            </div>
+
+            <AnimatePresence>
+                {patient && (
+                    <motion.div
+                        key="create-encounter"
+                        initial={{ opacity: 0, x: 25 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="sm:col-span-1 md:col-span-1 lg:col-span-2 xl:col-span-1 col-span-1"
+                    >
+                        <CreateEncounter patient={patient} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

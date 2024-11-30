@@ -1,7 +1,6 @@
 import { IconActivity, IconAmbulance, IconCalendarHeart, IconClipboardHeart } from "@tabler/icons-react";
 import Doctor2 from '../assets/undraw_medicine_b-1-ol (1).svg'
 import { Button } from "../shared/buttons/Button";
-import Wave from '../assets/wave.svg'
 import { WavyDivider } from "../shared/WavyDivider";
 
 export function Home() {

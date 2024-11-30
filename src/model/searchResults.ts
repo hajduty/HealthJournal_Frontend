@@ -1,6 +1,6 @@
-import { PatientSearch } from "./patientSearch";
+import { Patient } from "./patient";
 
 export interface SearchResults {
-    patients: PatientSearch[];
+    patients: Patient[];
     totalCount: number;
 }
