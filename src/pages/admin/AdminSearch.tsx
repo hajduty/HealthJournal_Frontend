@@ -11,7 +11,7 @@ export function AdminSearch() {
 
     const handlePatientSelect = (patient: any) => {
         console.log("Selected patient:", patient);
-        navigate("/home");
+        navigate(`/admin/patient/${patient.id}`, { state: { patient } });
     };
 
     return (

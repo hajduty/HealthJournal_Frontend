@@ -30,22 +30,22 @@ export function AdminEncounter() {
                     className="p-3 text-md bg-slate-800 outline-none rounded-sm text-white focus:placeholder-slate-350 placeholder-slate-200 shadow-lg focus:bg-slate-600 transition duration-200"
                     type="text"
                     placeholder={placeholder}
-                />
+                    />
                 <SearchPatients
                     query={query}
                     onQueryChange={handleQueryChange}
                     onSelectPatient={handlePatientSelect}
                     className="w-full"
-                />
+                    />
                 <AnimatePresence>
                     {patient && (
                         <motion.div
-                            key="create-encounter"
-                            initial={{ opacity: 0, y: 25 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="my-4"
+                        key="create-encounter"
+                        initial={{ opacity: 0, y: 25 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="my-4"
                         >
                             <PatientDetails patient={patient} />
                         </motion.div>
@@ -56,12 +56,12 @@ export function AdminEncounter() {
             <AnimatePresence>
                 {patient && (
                     <motion.div
-                        key="create-encounter"
-                        initial={{ opacity: 0, x: 25 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="sm:col-span-1 md:col-span-1 lg:col-span-2 xl:col-span-1 col-span-1"
+                    key="create-encounter"
+                    initial={{ opacity: 0, x: 25 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="sm:col-span-1 md:col-span-1 lg:col-span-2 xl:col-span-1 col-span-1"
                     >
                         <CreateEncounter patient={patient} />
                     </motion.div>

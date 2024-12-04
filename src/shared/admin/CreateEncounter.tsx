@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Observation } from "../../model/observation";
-import { IconCalendar, IconCloudUp, IconPlus, IconPlusEqual, IconRowRemove } from "@tabler/icons-react";
+import { IconCalendar, IconCloudUp, IconPlus, IconRowRemove } from "@tabler/icons-react";
 import React from "react";
 import DatePicker from "react-datepicker";
 import { Patient } from "../../model/patient";

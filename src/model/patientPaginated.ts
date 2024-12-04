@@ -1,6 +1,6 @@
 import { Patient } from "./patient";
 
-export interface SearchResults {
+export interface PatientPaginated {
     patients: Patient[];
     totalCount: number;
 }

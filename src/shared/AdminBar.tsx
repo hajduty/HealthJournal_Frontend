@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function AdminBar() {
     return (
-        <div className="bg-slate-400 w-fill h-16 flex gap-16 px-96 items-center underline text-slate-900">
+        <div className="bg-slate-400 w-fill h-10 flex gap-16 px-96 items-center underline text-slate-900">
             <Link to={"search"}>
                 <p>Patient search</p>
             </Link>

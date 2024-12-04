@@ -1,8 +1,8 @@
 import { Patient } from "../../model/patient"
 
-export const PatientDetails = ({ patient }: { patient: Patient }) => {
+export const PatientDetails = ({ patient, className }: { patient: Patient, className?: string }) => {
     return (
-        <>
+        <div className={className}>
             <h1 className="text-lg font-semibold">Patient info</h1>
             <div className="bg-slate-300 rounded-sm flex flex-col gap-2 p-4">
                 <span className="flex flex-row gap-2">
@@ -22,6 +22,6 @@ export const PatientDetails = ({ patient }: { patient: Patient }) => {
                     <p>{patient.userId}</p>
                 </span>
             </div>
-        </>
+        </div>
     )
 }

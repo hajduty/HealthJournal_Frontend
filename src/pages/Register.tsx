@@ -21,8 +21,8 @@ export function Register() {
     }
 
     return (
-        <div className="flex flex-col h-screen justify-items-center justify-center align-middle items-center bg-slate-950">
-            <div className="bg-slate-800 w-96 h-96 text-white rounded-md">
+        <div className="flex flex-col h-screen justify-items-center justify-center align-middle items-center bg-black">
+            <div className="bg-slate-900 w-96 h-96 text-white rounded-md">
                 <div className="flex flex-col gap-4 align-middle items-center h-full p-6">
                     <form onSubmit={handleLogin} className="w-full flex flex-col space-y-4">
                         <p className="text-3xl">HealthJournal</p>
@@ -44,7 +44,7 @@ export function Register() {
                             <p>Register</p>
                         </button>
                         {error && <>
-                            <p className="text-center text-gray-500">Error while registering, email already in use?</p>
+                            <p className="text-center text-gray-400">Error while registering, email already in use?</p>
                         </>}
                     </form>
                     <span className='text-start flex column space-x-2'>

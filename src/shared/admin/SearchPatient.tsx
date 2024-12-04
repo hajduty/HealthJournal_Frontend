@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { searchPatient } from "../../services/patientService";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { SearchResults } from "../../model/searchResults";
+import { PatientPaginated } from "../../model/patientPaginated";
 
 export function SearchPatients({
     query,
@@ -15,7 +15,7 @@ export function SearchPatients({
     initialPageSize?: number;
     className?: string;
 }) {
-    const [results, setResults] = useState<SearchResults | null>(null);
+    const [results, setResults] = useState<PatientPaginated | null>(null);
     const [page, setPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>(initialPageSize);
 
@@ -72,7 +72,7 @@ export function SearchPatients({
                 </div>
             )}
             {results?.totalCount && (
-                <div className="grid grid-cols-3 animate-fadeIn mt-4">
+                    <div className="grid grid-cols-3 animate-fadeIn mt-4 lg:text-base text-xs">
                     <div>
                         <p>
                             Showing {results.patients.length} of {results.totalCount} patients

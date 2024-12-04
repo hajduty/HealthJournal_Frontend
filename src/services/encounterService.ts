@@ -10,3 +10,12 @@ export const addEncounter = async (encounter: Encounter) => {
         //throw new Error('Error');
     }
 };
+
+export const getEncounters = async (patientId: number, page: number, pageSize: number) => {
+    try {
+        const response = await axios.get(`${API_URL}/encounter/encounters?patientId=${patientId}&page=${page}&pageSize=${pageSize}`);
+        return response;
+    } catch (error) {
+        //throw new Error('Error');
+    }
+};
