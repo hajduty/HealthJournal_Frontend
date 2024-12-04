@@ -21,10 +21,10 @@ export function Register() {
     }
 
     return (
-        <div className="flex flex-col h-screen justify-items-center justify-center align-middle items-center">
-            <div className="bg-slate-800 w-96 h-1/2 text-white rounded-sm">
-                <div className="flex flex-col gap-12 align-middle items-center h-full p-6">
-                    <form onSubmit={handleLogin} className="w-full flex flex-col space-y-6">
+        <div className="flex flex-col h-screen justify-items-center justify-center align-middle items-center bg-slate-950">
+            <div className="bg-slate-800 w-96 h-96 text-white rounded-md">
+                <div className="flex flex-col gap-4 align-middle items-center h-full p-6">
+                    <form onSubmit={handleLogin} className="w-full flex flex-col space-y-4">
                         <p className="text-3xl">HealthJournal</p>
                         <p className="text-xl">Register</p>
                         <input
