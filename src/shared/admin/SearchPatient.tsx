@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { searchPatient } from "../../services/patientService";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { PatientPaginated } from "../../model/patientPaginated";
+import { useDebounce } from "../../utils/useDebounce";
 
 export function SearchPatients({
     query,
@@ -19,10 +20,12 @@ export function SearchPatients({
     const [page, setPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>(initialPageSize);
 
+    const debouncedQuery = useDebounce(query, 150);
+
     const totalPages = results ? Math.ceil(results.totalCount / pageSize) : 1;
 
     useEffect(() => {
-        if (query) {
+        if (debouncedQuery) {
             handleSearching(query, page, pageSize);
         } else {
             setResults(null);
@@ -31,7 +34,7 @@ export function SearchPatients({
         if (results != null && page > totalPages) {
             setPage(totalPages);
         }
-    }, [query, page, pageSize]);
+    }, [debouncedQuery, page, pageSize]);
 
     const handleSearching = async (query: string, page: number, pageSize: number) => {
         try {

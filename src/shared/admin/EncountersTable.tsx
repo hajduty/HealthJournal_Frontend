@@ -39,7 +39,7 @@ export function EncountersTable({
             <h1 className="text-lg font-semibold">Encounters</h1>
             <div className={className}>
                 {results && (
-                    <div className="table bg-slate-400 rounded-sm animate-fadeIn w-full">
+                    <div className="table bg-slate-400 rounded-sm w-full">
                         <div className="table-header-group bg-slate-800 text-white">
                             <div className="table-row font-thin">
                                 <div className="table-cell text-left p-2">Date</div>
@@ -65,7 +65,7 @@ export function EncountersTable({
                     </div>
                 )}
                 {results?.totalCount && (
-                    <div className="grid grid-cols-3 animate-fadeIn mt-4 lg:text-base text-xs">
+                    <div className="grid grid-cols-3 mt-4 lg:text-base text-xs">
                         <div>
                             <p>
                                 Showing {results.encounters.length} of {results.totalCount} encounters
