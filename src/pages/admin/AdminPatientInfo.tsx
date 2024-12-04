@@ -33,15 +33,12 @@ export const AdminPatientInfo = () => {
 
     return (
         <>
-            <div className="grid lg:grid-cols-3 grid-flow-row auto-rows-max xl:mx-20 md:mx-8 lg:my-16 m-2 gap-2 text-slate-900">
-                <div className="flex flex-row gap-2">
-                    <PatientDetails patient={patient} className='w-1/2'/>
-                    <PatientDetails patient={patient} className='w-1/2'/>
-                </div>
-                <div>
+            <div className="grid lg:grid-cols-5 grid-flow-row auto-rows-max xl:mx-40 lg:mx-10 md:mx-8 lg:my-16 m-2 gap-2 text-slate-900">
+                <PatientDetails patient={patient} className='' />
+                <div className='lg:col-span-2 col-span-1'>
                     <EncountersTable onSelectEncounter={(e) => setEncounter(e)} patientId={patient.id} />
                 </div>
-                <div>
+                <div className='lg:col-span-2 col-span-1'>
                     <ObservationsTable observations={encounter?.observations!} />
                 </div>
             </div>
