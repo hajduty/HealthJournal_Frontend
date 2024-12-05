@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import { registerUser } from "../services/authService";
 
@@ -7,14 +7,26 @@ export function Register() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
-    const { login } = useAuth();
+    const { login, authenticated, user } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (authenticated && user?.role == "Admin") {
+            navigate("/admin");
+        }
+
+        if (authenticated && user?.role == "Patient") {
+            navigate("/patient");
+        }
+    }, []);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
             const response = await registerUser(email, password);
-            login(response.data.token, response.data.email)
+            login(response.data.token, response.data)
+            navigate("/");
         } catch (err) {
             setError(true);
         }

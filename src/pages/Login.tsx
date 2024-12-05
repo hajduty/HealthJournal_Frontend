@@ -2,26 +2,31 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import { loginUser } from "../services/authService";
+import { User } from "../model/user";
 
 export function Login() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
-    const { login, authenticated } = useAuth();
+    const { login, authenticated, user } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (authenticated) {
-            navigate("/");
+        if (authenticated && user?.role == "Admin") {
+            navigate("/admin");
+        }
+
+        if (authenticated && user?.role == "Patient") {
+            navigate("/patient");
         }
     }, []);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-
+        
         try {
             const response = await loginUser(email, password);
-            login(response.data.token, response.data.email);
+            login(response.data.token, response.data as User);
             navigate('/');
         } catch (err) {
             setError(true);
