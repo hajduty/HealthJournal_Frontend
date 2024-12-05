@@ -7,9 +7,9 @@ export function AdminHome() {
 
     return (
         <>
-            <div className="flex flex-col align-middle items-center justify-center m-20 gap-16 text-slate-900">
+            <div className="flex flex-col align-middle items-center justify-center lg:m-20 m-4 gap-16 text-slate-900">
                 <p className="text-2xl">Welcome back, {user?.email}</p>
-                <div className="flex flex-row gap-8">
+                <div className="flex flex-row lg:gap-8 gap-4">
                     <InfoButton
                         title={"Search patients"}
                         description={"Search through patient records to quickly find information such as appointments, or contact details."}

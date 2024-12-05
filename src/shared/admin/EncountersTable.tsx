@@ -51,7 +51,7 @@ export function EncountersTable({
                             {results.encounters.map((encounter, index) => (
                                 <div
                                     key={index}
-                                    className={`table-row cursor-pointer ${index % 2 === 0 ? "bg-slate-300" : "bg-slate-200"
+                                    className={`table-row cursor-pointer hover:bg-slate-400 transition duration-100 active:bg-slate-500 ${index % 2 === 0 ? "bg-slate-300" : "bg-slate-200"
                                         }`}
                                     onClick={() => onSelectEncounter(encounter)}
                                     role="button"
